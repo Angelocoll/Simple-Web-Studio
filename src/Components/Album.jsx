@@ -136,7 +136,7 @@ export default function ImageCarousel() {
           style={{
             width: "100%",
             display: "flex",
-            overflowX: "scroll",
+            overflowX: "auto",
             whiteSpace: "nowrap",
             gap: "16px",
             padding: "0px",
@@ -162,7 +162,7 @@ export default function ImageCarousel() {
           style={{
             width: "100%",
             display: "flex",
-            overflowX: "scroll",
+            overflowX: "auto",
             whiteSpace: "nowrap",
             gap: "16px",
             padding: "0px",
