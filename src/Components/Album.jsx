@@ -110,8 +110,8 @@ export default function ImageCarousel() {
       }
     };
 
-    const interval1 = setInterval(() => scroll(carouselRef1, 0.5), 200);  // Långsammare
-    const interval2 = setInterval(() => scroll(carouselRef2, -0.5), 200); // Långsammare
+    const interval1 = setInterval(() => scroll(carouselRef1, 0.3), 250);  // Långsammare
+    const interval2 = setInterval(() => scroll(carouselRef2, -0.3), 250); // Långsammare
     
 
     // Se till att vi börjar på slutet för den andra karusellen
