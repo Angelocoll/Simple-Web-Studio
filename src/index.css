@@ -315,6 +315,19 @@ h2.in-view {
   .Home .Album {
     margin-top: 50px;
   }
+  .Carousel {
+    overflow-x: scroll; /* Enable horizontal scrolling on mobile */
+    -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
+  }
+
+  /* For Webkit-based browsers (Chrome, Safari, Edge) */
+  .Carousel::-webkit-scrollbar {
+    display: block; /* Optional: display scrollbar for better visibility (if needed) */
+  }
+
+  .Carousel {
+    scrollbar-width: thin; /* Optional: adjust the scrollbar width for Firefox */
+  }
 }
 
 @media (max-width: 480px) {
