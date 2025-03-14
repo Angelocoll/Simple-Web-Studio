@@ -145,6 +145,7 @@ export default function ImageCarousel() {
             scrollbarWidth: "none", // Firefox
             msOverflowStyle: "none",
             touchAction: "none",
+            WebkitOverflowScrolling: "touch",
           }}
         >
           {[...images, ...images].map((src, index) => (
@@ -172,6 +173,7 @@ export default function ImageCarousel() {
             msOverflowStyle: "none",
             marginTop:"16px",
             touchAction: "none",
+            WebkitOverflowScrolling: "touch",
           }}
         >
           {[...images2, ...images2].map((src, index) => (
@@ -181,6 +183,12 @@ export default function ImageCarousel() {
           ))}
         </motion.div>
       </div>
+      <div style={{ width: "100%", overflowX: "auto", whiteSpace: "nowrap", padding: "0px", WebkitOverflowScrolling: "touch" }}>
+  <div style={{ minWidth: "1000px", backgroundColor: "#ddd" }}>
+    <img src={img} alt="test" style={{ width: "100%" }} />
+  </div>
+</div>
+
     </div>
   );
 }
