@@ -110,8 +110,12 @@ export default function ImageCarousel() {
       }
     };
 
+
+    const isMobile = window.innerWidth <= 768; // Kolla om skärmstorleken är för mobil
+    const intervalSpeed = isMobile ? 200 : 50; // Långsammare på mobil
+
     const interval1 = setInterval(() => scroll(carouselRef1, 1), 50);  // Långsammare
-    const interval2 = setInterval(() => scroll(carouselRef2, -0.3), 50); // Långsammare
+    const interval2 = setInterval(() => scroll(carouselRef2, -0.3), intervalSpeed); // Långsammare
     
 
     // Se till att vi börjar på slutet för den andra karusellen
