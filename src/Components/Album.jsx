@@ -110,11 +110,9 @@ export default function ImageCarousel() {
       }
     };
 
-    // Första karusellen (scrollar åt höger)
-    const interval1 = setInterval(() => scroll(carouselRef1, 1), 50);
-
-    // Andra karusellen (scrollar åt vänster, starta vid slutet)
-    const interval2 = setInterval(() => scroll(carouselRef2, -1), 50);
+    const interval1 = setInterval(() => scroll(carouselRef1, 0.5), 200);  // Långsammare
+    const interval2 = setInterval(() => scroll(carouselRef2, -0.5), 200); // Långsammare
+    
 
     // Se till att vi börjar på slutet för den andra karusellen
     if (carouselRef2.current) {
@@ -183,12 +181,6 @@ export default function ImageCarousel() {
           ))}
         </motion.div>
       </div>
-      <div style={{ width: "100%", overflowX: "auto", whiteSpace: "nowrap", padding: "0px", WebkitOverflowScrolling: "touch" }}>
-  <div style={{ minWidth: "1000px", backgroundColor: "#ddd" }}>
-    <img src={img} alt="test" style={{ width: "100%" }} />
-  </div>
-</div>
-
     </div>
   );
 }
