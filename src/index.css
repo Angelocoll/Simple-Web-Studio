@@ -320,13 +320,9 @@ h2.in-view {
     -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
   }
 
-  /* For Webkit-based browsers (Chrome, Safari, Edge) */
-  .Carusell::-webkit-scrollbar {
-    display: block; /* Optional: display scrollbar for better visibility (if needed) */
-  }
-
   .Carusell {
     scrollbar-width: thin; /* Optional: adjust the scrollbar width for Firefox */
+    scrollbar-width: 50px;
   }
 }
 

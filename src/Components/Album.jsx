@@ -151,8 +151,7 @@ export default function ImageCarousel() {
             flexDirection: "row", // Normalt läge, scrolla åt höger
             scrollbarWidth: "none", // Firefox
             msOverflowStyle: "none",
-            touchAction: "none",
-            WebkitOverflowScrolling: "touch",
+     
           }}
         >
           {[...images, ...images].map((src, index) => (
@@ -179,8 +178,7 @@ export default function ImageCarousel() {
             scrollbarWidth: "none", // Firefox
             msOverflowStyle: "none",
             marginTop:"16px",
-            touchAction: "none",
-            WebkitOverflowScrolling: "touch",
+         
           }}
         >
           {[...images2, ...images2].map((src, index) => (
