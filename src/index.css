@@ -316,13 +316,12 @@ h2.in-view {
     margin-top: 50px;
   }
   .Carusell {
-    overflow-x: scroll; /* Enable horizontal scrolling on mobile */
-    -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
+    overflow-x: scroll !important; /* Enable horizontal scrolling on mobile */
+    -webkit-overflow-scrolling: touch !important; /* For smoother scrolling on iOS */
   }
 
   .Carusell {
-    scrollbar-width: thin; /* Optional: adjust the scrollbar width for Firefox */
-    scrollbar-width: 50px;
+    scrollbar-width: thin !important; /* Optional: adjust the scrollbar width for Firefox */
   }
 }
 
