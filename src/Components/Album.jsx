@@ -100,9 +100,7 @@ export default function ImageCarousel() {
   useEffect(() => {
     const scroll = (ref, direction) => {
       if (ref.current) {
-        // Första karusellen (scrollar åt höger)
         if (ref.current.scrollLeft >= ref.current.scrollWidth - ref.current.clientWidth) {
-          // När vi når slutet av karusellen, hoppa till början
           ref.current.scrollLeft = 0;
         } else {
           ref.current.scrollLeft += direction;
@@ -110,20 +108,15 @@ export default function ImageCarousel() {
       }
     };
 
-
-       // Kolla om skärmen är mobil (<= 768px)
        const isMobile = window.innerWidth <= 768;
     
-       // Om vi är på en mobil, ta bort automatisk scroll
        if (isMobile) {
-         return; // Gör ingenting för automatisk scrollning på mobil
+         return; 
        }
 
-    const interval1 = setInterval(() => scroll(carouselRef1, 1), 50);  // Långsammare
-    const interval2 = setInterval(() => scroll(carouselRef2, -1), 50); // Långsammare
-    
+    const interval1 = setInterval(() => scroll(carouselRef1, 1), 50); 
+    const interval2 = setInterval(() => scroll(carouselRef2, -1), 50); 
 
-    // Se till att vi börjar på slutet för den andra karusellen
     if (carouselRef2.current) {
       carouselRef2.current.scrollLeft = carouselRef2.current.scrollWidth;
     }
@@ -136,7 +129,6 @@ export default function ImageCarousel() {
 
   return (
     <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", gap: "0px" }}>
-      {/* Första Karusellen (går åt höger) */}
       <div className="Carusell" style={{ width: "100%", display: "flex", justifyContent: "center" }}>
         <motion.div
           ref={carouselRef1}
@@ -148,8 +140,8 @@ export default function ImageCarousel() {
             gap: "16px",
             padding: "0px",
             scrollBehavior: "smooth",
-            flexDirection: "row", // Normalt läge, scrolla åt höger
-            scrollbarWidth: "none", // Firefox
+            flexDirection: "row", 
+            scrollbarWidth: "none",
             msOverflowStyle: "none",
      
           }}
@@ -162,7 +154,6 @@ export default function ImageCarousel() {
         </motion.div>
       </div>
 
-      {/* Andra Karusellen (går åt vänster, overflow till vänster) */}
       <div className="Carusell" style={{ width: "100%", display: "flex", justifyContent: "center" }}>
         <motion.div
           ref={carouselRef2}
@@ -174,8 +165,8 @@ export default function ImageCarousel() {
             gap: "16px",
             padding: "0px",
             scrollBehavior: "smooth",
-            flexDirection: "row-reverse", // Byter riktning så karusellen scrollar åt vänster
-            scrollbarWidth: "none", // Firefox
+            flexDirection: "row-reverse", 
+            scrollbarWidth: "none", 
             msOverflowStyle: "none",
             marginTop:"16px",
          

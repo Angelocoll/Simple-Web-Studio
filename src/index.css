@@ -204,13 +204,13 @@ header {
 }
 
 .out-of-view {
-  color: rgba(255, 255, 255, 0.01); /* Grey and semi-transparent */
-  opacity: 0.1; /* Make the text semi-transparent */
+  color: rgba(255, 255, 255, 0.01);
+  opacity: 0.1;
 }
 
 .in-view {
   color: rgb(164, 164, 164);
-  opacity: 1; /* Full opacity */
+  opacity: 1;
 }
 .in-view span {
   color: #6eaff5;
@@ -246,38 +246,36 @@ h2.in-view {
 .Home .Carusell img {
   height: 300px;
 }
-/* För Webkit-baserade webbläsare (Chrome, Safari, Edge) */
+
 .Carousel::-webkit-scrollbar {
   display: none;
 }
 
-/* För Firefox */
 .Carousel {
   scrollbar-width: none;
 }
 
-/* För Edge och IE */
 .Carousel {
   -ms-overflow-style: none;
 }
 
 @media (max-width: 1200px) {
   .Logo {
-    font-size: 10vw; /* Ändra till 10% av viewportens bredd */
+    font-size: 10vw;
   }
   .Logo span {
-    font-size: 5vw; /* Justera även fontstorleken för 'Web Studio' */
+    font-size: 5vw;
   }
   h2 {
-    font-size: 56px; /* Större fontstorlek för större skärmar */
+    font-size: 56px;
   }
 
   p {
-    font-size: 20px; /* Större textstorlek för större skärmar */
+    font-size: 20px;
   }
 
   span {
-    font-size: 20px; /* Anpassa storleken på span för större skärmar */
+    font-size: 20px;
   }
   .Home img {
     height: 400px;
@@ -286,21 +284,21 @@ h2.in-view {
 
 @media (max-width: 768px) {
   .Logo {
-    font-size: 12vw; /* Ändra till 12% av viewportens bredd */
+    font-size: 12vw;
   }
   .Logo span {
-    font-size: 6vw; /* Anpassa fontstorleken för mindre skärmar */
+    font-size: 6vw;
   }
   h2 {
-    font-size: 40px; /* Liten fontstorlek för tabletter */
+    font-size: 40px;
   }
 
   p {
-    font-size: 17px; /* Anpassa p-taggar för tabletter */
+    font-size: 17px;
   }
 
   span {
-    font-size: 17px; /* Anpassad storlek för span på tabletter */
+    font-size: 17px;
   }
   .Home div {
     flex-direction: column;
@@ -316,32 +314,32 @@ h2.in-view {
     margin-top: 50px;
   }
   .Carusell {
-    overflow-x: scroll !important; /* Enable horizontal scrolling on mobile */
-    -webkit-overflow-scrolling: touch !important; /* For smoother scrolling on iOS */
+    overflow-x: scroll !important;
+    -webkit-overflow-scrolling: touch !important;
   }
 
   .Carusell {
-    scrollbar-width: thin !important; /* Optional: adjust the scrollbar width for Firefox */
+    scrollbar-width: thin !important;
   }
 }
 
 @media (max-width: 480px) {
   .Logo {
-    font-size: 15vw; /* Större fontstorlek för mobiler */
+    font-size: 15vw;
   }
   .Logo span {
-    font-size: 8vw; /* Anpassad fontstorlek */
+    font-size: 8vw;
   }
   h2 {
-    font-size: 32px; /* Mindre fontstorlek för mobiler */
+    font-size: 32px;
   }
 
   p {
-    font-size: 16px; /* Mindre text för mobiler */
-    margin-bottom: 12px; /* Mer utrymme mellan textblock */
+    font-size: 16px;
+    margin-bottom: 12px;
   }
 
   span {
-    font-size: 16px; /* Justera storleken på <span> för mobiler */
+    font-size: 16px;
   }
 }
