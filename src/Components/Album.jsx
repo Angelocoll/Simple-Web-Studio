@@ -109,9 +109,20 @@ export default function ImageCarousel() {
         }
       }
     };
+    let animationFrame1, animationFrame2;
 
-    const interval1 = setInterval(() => scroll(carouselRef1, 0.5), 150);  // Långsammare
-    const interval2 = setInterval(() => scroll(carouselRef2, -0.5), 150); // Långsammare
+    const animateScroll1 = () => {
+      scroll(carouselRef1, 1); // Första karusellen (scrollar åt höger)
+      animationFrame1 = requestAnimationFrame(animateScroll1);
+    };
+
+    const animateScroll2 = () => {
+      scroll(carouselRef2, -1); // Andra karusellen (scrollar åt vänster)
+      animationFrame2 = requestAnimationFrame(animateScroll2);
+    };
+
+    animateScroll1();
+    animateScroll2();
     
 
     // Se till att vi börjar på slutet för den andra karusellen
@@ -120,10 +131,11 @@ export default function ImageCarousel() {
     }
 
     return () => {
-      clearInterval(interval1);
-      clearInterval(interval2);
+      cancelAnimationFrame(animationFrame1);
+      cancelAnimationFrame(animationFrame2);
     };
   }, []);
+
 
   return (
     <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", gap: "0px" }}>
