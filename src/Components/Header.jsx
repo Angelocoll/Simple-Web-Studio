@@ -80,12 +80,10 @@ export default function Header() {
         className="hero-section"
         ref={heroRef}
         style={{
-          backgroundImage: `url(${heroImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
           height: "100vh", 
         }}
-      ></div>
+      > <img className="hero-image" src={heroImage} alt="" /></div>
+     
 
       <header>
         <div
