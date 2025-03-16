@@ -188,6 +188,9 @@ header {
   padding-left: 60px;
   padding-top: 150px;
 }
+.Home .Service {
+  min-height: 25vh;
+}
 .Home img {
   height: 500px;
 }
@@ -326,6 +329,9 @@ h2.in-view {
   .Carusell {
     scrollbar-width: thin !important;
   }
+  .Home div div {
+    width: 60%;
+  }
 }
 
 @media (max-width: 480px) {
@@ -346,5 +352,9 @@ h2.in-view {
 
   span {
     font-size: 16px;
+  }
+  .Home div div {
+    padding-top: 100px;
+    width: 80%;
   }
 }

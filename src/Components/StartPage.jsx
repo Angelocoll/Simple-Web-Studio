@@ -82,7 +82,7 @@ const StartPage = () => {
 
   return (
     <div className="Home">
-      <div>
+      <div className='Service'>
       <div>
         <h2
           ref={h2Ref} 
