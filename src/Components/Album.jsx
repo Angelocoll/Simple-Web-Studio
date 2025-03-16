@@ -120,7 +120,7 @@ export default function ImageCarousel() {
     let interval2;
 
     if (window.innerWidth < 480) {
-      interval2 = setInterval(() => scroll(carouselRef2, -0.3), 200);
+      interval2 = setInterval(() => scroll(carouselRef2, -1), 200);
     } else {
       interval2 = setInterval(() => scroll(carouselRef2, -1), 50);
     }
