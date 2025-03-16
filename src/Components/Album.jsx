@@ -112,7 +112,8 @@ export default function ImageCarousel() {
     let interval1;
 
     if (window.innerWidth < 480) {
-      interval1 = setInterval(() => scroll(carouselRef1, 0.3), 200);
+      interval1 = setInterval(() => scroll(carouselRef1, 1), 200);
+      console.log("kör långsamt")
     } else {
       interval1 = setInterval(() => scroll(carouselRef1, 1), 50);
     }
