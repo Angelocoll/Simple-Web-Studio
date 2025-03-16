@@ -109,8 +109,13 @@ export default function ImageCarousel() {
     };
 
    
+    let interval1;
 
-    const interval1 = setInterval(() => scroll(carouselRef1, 1), 50); 
+    if (window.innerWidth < 480) {
+      interval2 = setInterval(() => scroll(carouselRef2, 0.3), 200);
+    } else {
+      interval2 = setInterval(() => scroll(carouselRef2, 1), 50);
+    }
     let interval2;
 
     if (window.innerWidth < 480) {
