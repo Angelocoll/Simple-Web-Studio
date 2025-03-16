@@ -312,6 +312,10 @@ h2.in-view {
     flex-direction: column;
     align-items: center;
   }
+  .Home .Service div {
+    padding-left: 40px !important;
+    padding-right: 20px !important;
+  }
   .Carusell div div {
     min-width: 120px !important;
   }
