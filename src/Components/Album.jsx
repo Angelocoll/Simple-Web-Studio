@@ -108,14 +108,18 @@ export default function ImageCarousel() {
       }
     };
 
-       const isMobile = window.innerWidth <= 768;
-    
-       if (isMobile) {
-         return; 
-       }
+   
 
     const interval1 = setInterval(() => scroll(carouselRef1, 1), 50); 
-    const interval2 = setInterval(() => scroll(carouselRef2, -1), 50); 
+    let interval2;
+
+    if (window.innerWidth < 480) {
+      interval2 = setInterval(() => scroll(carouselRef2, -0.3), 200);
+    } else {
+      interval2 = setInterval(() => scroll(carouselRef2, -1), 50);
+    }
+     
+  
 
     if (carouselRef2.current) {
       carouselRef2.current.scrollLeft = carouselRef2.current.scrollWidth;
