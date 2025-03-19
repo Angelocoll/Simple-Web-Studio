@@ -190,6 +190,7 @@ header {
 }
 .Home .Service {
   min-height: 25vh;
+  overflow: hidden;
 }
 .Home img {
   height: 500px;

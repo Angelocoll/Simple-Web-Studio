@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import heroImage from "../assets/Hero.jpg";
+import heroImage from "../assets/Hero.webp";
 
 export default function Header() {
   const [scrollPercent, setScrollPercent] = useState(0);
