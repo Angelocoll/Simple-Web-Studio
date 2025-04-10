@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Iphone from '../assets/Iphonebg.webp'
+import Iphone from '../assets/Iphone4.png'
 import ImageCarousel from './Album'
 
 const StartPage = () => {
