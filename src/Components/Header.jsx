@@ -1,113 +1,118 @@
 import { useState, useEffect, useRef } from "react";
 import heroImage from "../assets/Hero.webp";
 
-export default function Header() {
-  const [scrollPercent, setScrollPercent] = useState(0);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth); 
+const lerp = (a, b, t) => a + (b - a) * t;
+const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
 
+const PADDING_TOP = 16;
+const PADDING_LEFT = 24;
+
+export default function Header() {
+  const [t, setT] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const heroRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      window.requestAnimationFrame(() => {
-        const heroHeight = heroRef.current.clientHeight;
-        const scrollPosition = window.scrollY;
-        const scrollPercentage = (scrollPosition / heroHeight) * 100;
-        setScrollPercent(scrollPercentage);
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
-    };
+    // Trigger fade-in animation vid mount
+    const timer = setTimeout(() => setLoaded(true), 50);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto"; 
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
+    const handleScroll = () => {
+      requestAnimationFrame(() => {
+        const heroHeight = heroRef.current?.clientHeight ?? window.innerHeight;
+        const raw = clamp(window.scrollY / heroHeight, 0, 1);
+        setT(raw);
+      });
     };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [isMenuOpen]);
 
-  const logoVerticalPosition = (scrollPercent / 100) * 50;
-  const logoHorizontalPosition = (scrollPercent / 100) * 50;
+  const w = window.innerWidth;
 
-  let topPosition, leftPosition, logoFontSize;
+  // Fontstorlek för "Simple"
+// Fontstorlek för "Simple"
+const fontStart = w > 1200 ? 96 : w > 768 ? 72 : 52;  // större i hero
+const fontEnd   = w > 768  ? 28 : 20;                   // samma i hörnet
 
-   if (screenWidth > 1600) {
-    topPosition = Math.max(3, 45 - logoVerticalPosition); 
-    leftPosition = Math.max(6, 50 - logoHorizontalPosition); 
-    logoFontSize = Math.max(160 - (scrollPercent / 100) * (160 - 48), 48);  
-  } 
-  else if (screenWidth > 1200) {
-    topPosition = Math.max(7, 45 - logoVerticalPosition); 
-    leftPosition = Math.max(7, 50 - logoHorizontalPosition); 
-    logoFontSize = Math.max(140 - (scrollPercent / 100) * (140 - 48), 48);  
-  } else if (screenWidth > 768) {
-    topPosition = Math.max(5, 45 - logoVerticalPosition); 
-    leftPosition = Math.max(10, 50 - logoHorizontalPosition); 
-    logoFontSize = Math.max(100 - (scrollPercent / 100) * (100 - 40), 40);  
-  } else {
-    topPosition = Math.max(7, 45 - logoVerticalPosition); 
-    leftPosition = Math.max(15, 50 - logoHorizontalPosition); 
-    logoFontSize = Math.max(80 - (scrollPercent / 100) * (80 - 20), 26);  
-  }
+// "WEB STUDIO"
+const subStart = fontStart * 0.38;   // samma förhållande i hero
+const subEnd   = fontEnd   * 0.38;   // mindre i hörnet (var 0.52)
 
-  const webStudioFontSize = Math.max(24 - (scrollPercent / 100) * (24 - 6), 8);
+  const fontSize = lerp(fontStart, fontEnd, t);
+  const subSize  = lerp(subStart, subEnd, t);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  // Approximera logotypens storlek för centrering
+  // "Simple" i Inria Serif ≈ 0.58× fontSize per tecken, 6 tecken
+  const logoW = fontSize * 0.58 * 6;
+  const logoH = fontSize + subSize + 6;
+
+  const centerX = window.innerWidth / 2;
+  const centerY = window.innerHeight / 2;
+
+  const startLeft = centerX - logoW / 2;
+  const startTop  = centerY - logoH / 2;
+
+  const left = lerp(startLeft, PADDING_LEFT, t);
+  const top  = lerp(startTop, PADDING_TOP, t);
 
   return (
     <div>
       <div
         className="hero-section"
         ref={heroRef}
-        style={{
-          height: "100vh", 
-        }}
-      > <img className="hero-image" src={heroImage} alt="" /></div>
-     
+        style={{ height: "100vh" }}
+      >
+        <img className="hero-image" src={heroImage} alt="" />
+      </div>
 
       <header>
         <div
-          className="Logo"
           style={{
-            top: `${topPosition}vh`, 
-            left: `${leftPosition}vw`, 
+            position: "fixed",
+            top: `${top}px`,
+            left: `${left}px`,
+            transform: "none",
             display: isMenuOpen ? "none" : "block",
-            fontSize: `${logoFontSize}px`, // Dynamisk storlek för logotypen beroende på scroll och skärmstorlek
+            // Fade-in vid sidladdning, sedan ingen transition vid scroll
+            opacity: loaded ? 1 : 0,
+            transition: loaded && t === 0
+              ? "opacity 1s ease-in"
+              : "none",
+            willChange: "top, left",
+            fontFamily: '"Inria Serif", serif',
+            color: "white",
+            lineHeight: 1.1,
           }}
         >
-          <div style={{ fontSize: `${logoFontSize}px` }}>Simple</div>
-          <span style={{ fontSize: `${webStudioFontSize}px` }}>
+          <div style={{ fontSize: `${fontSize}px`, fontWeight: 400 }}>
+            Simple
+          </div>
+          <span style={{
+            fontSize: `${subSize}px`,
+            color: "rgb(164, 164, 164)",
+            letterSpacing: "0.3em",
+            display: "block",
+          }}>
             WEB STUDIO
           </span>
         </div>
 
         <div
-          className={`Menu ${isMenuOpen ? "open" : ""}`} 
-          onClick={() => setIsMenuOpen(!isMenuOpen)} 
+          className={`Menu ${isMenuOpen ? "open" : ""}`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          <div className={`Menu-line ${isMenuOpen ? "rotate1" : ""}`}></div>
-          <div className={`Menu-line ${isMenuOpen ? "hidden" : ""}`}></div>
-          <div className={`Menu-line ${isMenuOpen ? "rotate2" : ""}`}></div>
+          <div className="Menu-line" />
+          <div className="Menu-line" />
+          <div className="Menu-line" />
         </div>
       </header>
 

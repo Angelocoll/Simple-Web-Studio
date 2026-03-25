@@ -54,21 +54,12 @@ header {
 .Logo {
   position: absolute;
   transition: all 0.2s ease-out;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
   text-align: center;
-  font-size: 48px;
-  transition: all 0.1s ease;
+
+  transition: all 0s ease;
   color: white;
   z-index: 800;
-}
-
-.scrolled .Logo {
-  top: 20px;
-  left: 50px;
-  transform: none;
-  font-size: 26px;
 }
 
 .Logo span {
@@ -93,7 +84,9 @@ header {
   width: 45px;
   height: 3px;
   background-color: rgb(255, 255, 255);
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
 /* När menyn är öppen */
@@ -196,14 +189,20 @@ header {
 }
 .Home p {
   margin: 0.5rem;
-  transition: color 3s ease, opacity 3s ease;
+  transition:
+    color 3s ease,
+    opacity 3s ease;
 }
 .Home h2 {
   margin: 0.5rem;
-  transition: color 2s ease, opacity 3s ease;
+  transition:
+    color 2s ease,
+    opacity 3s ease;
 }
 .Home span {
-  transition: color 4s ease, opacity 4s ease;
+  transition:
+    color 4s ease,
+    opacity 4s ease;
 }
 
 .out-of-view {
@@ -266,7 +265,7 @@ h2.in-view {
   height: 100vh;
   object-fit: cover;
 }
-footer {
+/*footer {
   height: 20vh;
   background-color: rgb(255, 166, 0);
   display: flex;
@@ -294,6 +293,18 @@ footer :nth-child(5) div {
 }
 footer :nth-child(1) {
   padding-left: 10px;
+} */
+
+@media (max-width: 768px) {
+  .carousel-img {
+    min-width: 160px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-img {
+    min-width: 120px !important;
+  }
 }
 
 @media (max-width: 1200px) {

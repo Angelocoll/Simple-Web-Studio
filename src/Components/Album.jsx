@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
 import img from '../assets/a.webp';
 import img1 from '../assets/b.webp';
 import img2 from '../assets/c.webp';
@@ -29,166 +28,71 @@ import img26 from '../assets/8.webp';
 import img27 from '../assets/9.webp';
 import img28 from '../assets/10.webp';
 
-
-const images = [
-  img,
-  img1,
-  img2,
-  img3,
-  img4,
-  img5,
-  img6,
-  img7,
-  img8,
-  img19,
-  img20,
-  img21,
-  img22,
-  img23,
-
-  img10,
-  img11,
-  img15,
-  img17,
-  img9,
-  img14,
-  img13,
-  img12,
-  img18,
-  img24,
-  img25,
-  img26,
-  img27,
-  img28,
-];
-const images2 = [
-  img10,
-  img11,
-  img15,
-  img17,
-  img9,
-  img14,
-  img13,
-  img12,
-  img18,
-  img24,
-  img25,
-  img26,
-  img27,
-  img28,
-
-  img,
-  img1,
-  img2,
-  img3,
-  img4,
-  img5,
-  img6,
-  img7,
-  img8,
-  img19,
-  img20,
-  img21,
-  img22,
-  img23,
-];
+const images = [img,img1,img2,img3,img4,img5,img6,img7,img8,img19,img20,img21,img22,img23,img10,img11,img15,img17,img9,img14,img13,img12,img18,img24,img25,img26,img27,img28];
+const images2 = [img10,img11,img15,img17,img9,img14,img13,img12,img18,img24,img25,img26,img27,img28,img,img1,img2,img3,img4,img5,img6,img7,img8,img19,img20,img21,img22,img23];
 
 export default function ImageCarousel() {
-  const carouselRef1 = useRef(null);
-  const carouselRef2 = useRef(null);
-
-  useEffect(() => {
-    const scroll = (ref, direction) => {
-      if (ref.current) {
-        if (ref.current.scrollLeft >= ref.current.scrollWidth - ref.current.clientWidth) {
-          ref.current.scrollLeft = 0;
-        } else {
-          ref.current.scrollLeft += direction;
-        }
-      }
-    };
-
-   
-    let interval1;
-
-    if (window.innerWidth < 480) {
-      interval1 = setInterval(() => scroll(carouselRef1, 1), 200);
-      console.log("kör långsamt")
-    } else {
-      interval1 = setInterval(() => scroll(carouselRef1, 1), 50);
-    }
-    let interval2;
-
-    if (window.innerWidth < 480) {
-      interval2 = setInterval(() => scroll(carouselRef2, -1), 200);
-    } else {
-      interval2 = setInterval(() => scroll(carouselRef2, -1), 50);
-    }
-     
-  
-
-    if (carouselRef2.current) {
-      carouselRef2.current.scrollLeft = carouselRef2.current.scrollWidth;
-    }
-
-    return () => {
-      clearInterval(interval1);
-      clearInterval(interval2);
-    };
-  }, []);
-
   return (
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", gap: "0px" }}>
-      <div className="Carusell" style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-        <motion.div
-          ref={carouselRef1}
-          style={{
-            width: "100%",
-            display: "flex",
-            overflowX: "auto",
-            whiteSpace: "nowrap",
-            gap: "16px",
-            padding: "0px",
-            scrollBehavior: "smooth",
-            flexDirection: "row", 
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-     
-          }}
-        >
-          {[...images, ...images].map((src, index) => (
-            <div key={index} style={{ minWidth: "250px", background: "#d1d1d1" }}>
-              <img src={src} alt={`Slide ${index}`} style={{ width: "100%" }} />
-            </div>
-          ))}
-        </motion.div>
-      </div>
+    <>
+      <style>{`
+        @keyframes scrollLeft {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes scrollRight {
+          0%   { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+        .anim-left {
+          animation: scrollLeft 300s linear infinite;
+        }
+        .anim-right {
+          animation: scrollRight 300s linear infinite;
+          margin-top: 16px;
+        }
+      `}</style>
 
-      <div className="Carusell" style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-        <motion.div
-          ref={carouselRef2}
-          style={{
-            width: "100%",
-            display: "flex",
-            overflowX: "auto",
-            whiteSpace: "nowrap",
-            gap: "16px",
-            padding: "0px",
-            scrollBehavior: "smooth",
-            flexDirection: "row-reverse", 
-            scrollbarWidth: "none", 
-            msOverflowStyle: "none",
-            marginTop:"16px",
-         
-          }}
-        >
-          {[...images2, ...images2].map((src, index) => (
-            <div key={index} style={{ minWidth: "250px", background: "#d1d1d1" }}>
-              <img src={src} alt={`Slide ${index}`} style={{ width: "100%" }} />
-            </div>
-          ))}
-        </motion.div>
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", gap: "0px", flexDirection: "column" }}>
+
+        <div className="Carusell" style={{ width: "100%", overflow: "hidden" }}>
+          <div
+            className="anim-left"
+            style={{
+              display: "flex",
+              gap: "16px",
+              padding: "0px",
+              flexDirection: "row",
+              width: "max-content",
+            }}
+          >
+            {[...images, ...images].map((src, index) => (
+              <div key={index} style={{ minWidth: "250px", background: "#d1d1d1", flexShrink: 0 }}>
+                <img src={src} alt={`Slide ${index}`} style={{ width: "100%" }} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="Carusell" style={{ width: "100%", overflow: "hidden" }}>
+          <div
+            className="anim-right"
+            style={{
+              display: "flex",
+              gap: "16px",
+              padding: "0px",
+              flexDirection: "row",
+              width: "max-content",
+            }}
+          >
+            {[...images2, ...images2].map((src, index) => (
+              <div key={index} style={{ minWidth: "250px", background: "#d1d1d1", flexShrink: 0 }}>
+                <img src={src} alt={`Slide ${index}`} style={{ width: "100%" }} />
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
-    </div>
+    </>
   );
 }
