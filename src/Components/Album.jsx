@@ -52,7 +52,7 @@ export default function ImageCarousel() {
         }
       `}</style>
 
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", gap: "0px", flexDirection: "column" }}>
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", gap: "16px", flexDirection: "column" }}>
 
         <div className="Carusell" style={{ width: "100%", overflow: "hidden" }}>
           <div

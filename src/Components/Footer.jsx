@@ -7,6 +7,7 @@ const Footer = () => {
           border-top: 0.5px solid rgba(0,0,0,0.15);
           font-family: 'DM Mono', monospace;
           padding: 2.5rem 3rem 2rem;
+          margin-top: 16px;
         }
 
         .footer__top {
