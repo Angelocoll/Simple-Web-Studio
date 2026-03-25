@@ -44,8 +44,8 @@ const fontStart = w > 1200 ? 96 : w > 768 ? 72 : 52;  // större i hero
 const fontEnd   = w > 768  ? 28 : 20;                   // samma i hörnet
 
 // "WEB STUDIO"
-const subStart = fontStart * 0.38;   // samma förhållande i hero
-const subEnd   = fontEnd   * 0.38;   // mindre i hörnet (var 0.52)
+const subStart = fontStart * 0.20;   // samma förhållande i hero
+const subEnd   = fontEnd   * 0.20;   // mindre i hörnet (var 0.52)
 
   const fontSize = lerp(fontStart, fontEnd, t);
   const subSize  = lerp(subStart, subEnd, t);
@@ -101,6 +101,8 @@ const subEnd   = fontEnd   * 0.38;   // mindre i hörnet (var 0.52)
             color: "rgb(164, 164, 164)",
             letterSpacing: "0.3em",
             display: "block",
+            textAlign: "center",
+            marginTop: "6px",
           }}>
             WEB STUDIO
           </span>
