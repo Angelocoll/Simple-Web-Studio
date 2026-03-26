@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import heroImage from "../assets/Hero.webp";
+import { Link } from "react-router-dom";
 
 const lerp = (a, b, t) => a + (b - a) * t;
 const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
@@ -120,10 +121,10 @@ const subEnd   = fontEnd   * 0.20;   // mindre i hörnet (var 0.52)
 
       <div className={`fullscreen-menu ${isMenuOpen ? "open" : ""}`}>
         <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact Us</a></li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/services">Services</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/contact">Contact Us</Link></li>
         </ul>
       </div>
     </div>
