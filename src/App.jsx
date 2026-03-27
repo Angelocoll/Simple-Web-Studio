@@ -5,6 +5,8 @@ import StartPage from './Components/StartPage'
 import Contact from './Components/ContactPage'
 import HeaderNoAnimation from './Components/HeaderNoAnimation'
 import ScrollToTop from './Components/ScrollToTOP'
+import Services from './Components/ServicePage'
+import About from './Components/AboutPage'
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<><Header/><StartPage /></>} />
+        <Route path="/services" element={<><HeaderNoAnimation/><Services /></>} />
+        <Route path="/About" element={<><HeaderNoAnimation/><About /></>} />
         <Route path="/contact" element={<><HeaderNoAnimation/><Contact /></>} />
       </Routes>
       <Footer />

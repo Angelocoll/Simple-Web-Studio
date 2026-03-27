@@ -533,7 +533,7 @@ const handleSubmit = async (e) => {
 
               <div className="ct-counter">
                 <div className="ct-counter-item">
-                  <div className="ct-counter-num">3<em>+</em></div>
+                  <div className="ct-counter-num">4<em>+</em></div>
                   <div className="ct-counter-desc">Projekt</div>
                 </div>
                 <div className="ct-counter-item">
